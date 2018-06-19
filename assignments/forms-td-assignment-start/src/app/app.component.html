@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- Add a Form with the following Inputs (and Validators)
+           1) Mail address (should not be empty and should be an email address)
+           2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
+              Set "Advanced" as Default
+           3) A Password field (should not be empty)
+           4) A Submit Button
+
+           Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
+
+           Upon submitting the form, you should simply print the Value of the Form to the Console.
+           Optionally, display it in your template.
+      -->
+      <form #myForm="ngForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" required email ngModel name="email" #email="ngModel">
+        </div>
+        <span class="help-block" *ngIf="email.invalid && email.touched">Invalid email!!</span>
+        <div class="form-group">
+          <label for="subscription">Choose a Subscription</label>
+          <select name="subscription" id="subscription" [ngModel]="defaultSubscription" class="form-control">
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="text" id="password" class="form-control" name="password" ngModel required #password="ngModel">
+        </div>
+        <span class="help-block" *ngIf="password.invalid && password.touched">Invalid password!!</span>
+        <button type="submit" 
+        class="btn btn-primary" 
+        [disabled]="myForm.invalid"
+        (click)="onSubmit()">Submit</button>  <!-- Either add a click listener to this button for submitting this form or use ngSubmit property of the form to submit the data. -->
+        <span class="help-block" *ngIf="myForm.invalid && myForm.touched">Invalid Form data!!</span>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li role="presentation" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">  <!-- [routerLinkActiveOptions]="{exact:true}" forces the routerLink to be matched exactly. If this is not used then '/' will match all the routerLinks and this nav will always have active class -->
+          <a routerLink="/">Home</a>
+        </li> <!-- we could use href="/" but it causes reload of the page so we lose the state of page so instead of href, we will use routerLink="/" (directive) which wont reload the page but take us to the required routes -->
+        <li role="presentation" 
+          routerLinkActive="active">
+          <a routerLink="servers">Servers</a>
+        </li>
+        <li role="presentation"
+          routerLinkActive="active">
+          <a [routerLink]="['users']">Users</a>  <!-- Same routerLink as above but here it is being bound to property for better control over url -->
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+     <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
