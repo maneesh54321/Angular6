@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin theme($body-bg-color, $btn-bg-color, $input-txt-color, $card-bg-color, $card-color) {
+  body {
+    background-color: $body-bg-color;
+  }
+
+  body .ui-inputtext {
+    color: $input-txt-color;
+    background: $btn-bg-color;
+  }
+
+  body .ui-card {
+    background-color: $card-bg-color;
+    color: $card-color;
+  }
+}
+
+.dark {
+  body {
+    background-color: #3f3f3f;
+  }
+}
+
+.light {
+  @include theme(#ddd, #f9f3f3, #000, #ccc, #1d1b1b);
+}

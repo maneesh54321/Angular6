@@ -1,0 +1,13 @@
+<div [className]="displaySidebar? 'layout-sidebar expanded' : 'layout-sidebar'">
+  <div class="sidebar-toggle">
+    <button pButton [icon]="displaySidebar?'pi pi-chevron-left':'pi pi-bars'" (click)="toggleSidebar()"></button>
+  </div>
+  <div class="menu-panel">
+    <ul>
+      <li><i class="pi pi-chart-bar"></i><span class="menu-item-name">Dashboard</span></li>
+      <li><i class="pi pi-table"></i><span class="menu-item-name">Components</span></li>
+      <li><i class="pi pi-home"></i><span class="menu-item-name">Landing</span></li>
+      <li><i class="pi pi-align-left"></i><span class="menu-item-name">Menu Hierarchy</span></li>
+    </ul>
+  </div>
+</div>
