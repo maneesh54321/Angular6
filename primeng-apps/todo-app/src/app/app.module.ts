@@ -5,30 +5,31 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 import {SidebarModule} from 'primeng/sidebar';
-import {ButtonModule} from 'primeng/button';
-import {PanelMenuModule} from 'primeng/panelmenu';
-import {SigninComponent} from './auth/signin/signin.component';
-import {CardModule, InputSwitchModule, InputTextModule} from "primeng/primeng";
 import {SidebarComponent} from './layouts/sidebar/sidebar.component';
-import {FormsModule} from "@angular/forms";
+import {AuthModule} from "./auth/auth.module";
+import {HeaderComponent} from './layouts/header/header.component';
+import {BaseLayoutComponent} from './layouts/base-layout/base-layout.component';
+import {SharedModule} from "./shared/shared.module";
+import {AuthRoutingModule} from "./auth/auth-routing.module";
+import {MenuModule} from "primeng/menu";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
-    SidebarComponent
+    SidebarComponent,
+    HeaderComponent,
+    BaseLayoutComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SidebarModule,
-    ButtonModule,
-    PanelMenuModule,
-    InputTextModule,
-    InputSwitchModule,
-    FormsModule,
-    CardModule
+    AuthModule,
+    SharedModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

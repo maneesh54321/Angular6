@@ -1,33 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-
-declare var document;
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<router-outlet></router-outlet>',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'todo-app';
-  checked: boolean;
+export class AppComponent {
 
   constructor() {
-    this.checked = true;
-  }
 
-  ngOnInit() {
-
-  }
-
-  toggleTheme(themeName){
-    document.getElementById('html-root').className=themeName;
-  }
-
-  handleChange($event: any) {
-    if(this.checked){
-      this.toggleTheme('dark');
-    }else {
-      this.toggleTheme('light');
-    }
   }
 }

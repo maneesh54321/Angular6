@@ -3,13 +3,25 @@
 body {
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
-@mixin theme($body-bg-color, $btn-bg-color, $input-txt-color, $card-bg-color, $card-color) {
+@mixin theme($body-bg-color, $header-bg-color, $profile-pic-bg-color, $primary-text-color) {
   body {
     background-color: $body-bg-color;
   }
 
+  .header {
+    background-color: $header-bg-color;
+    color: $primary-text-color;
+
+    .user-profile-pic {
+      background-color: $profile-pic-bg-color;
+    }
+  }
+}
+
+@mixin theme_overrides($btn-bg-color, $input-txt-color, $card-bg-color, $card-color) {
   body .ui-inputtext {
     color: $input-txt-color;
     background: $btn-bg-color;
@@ -22,11 +34,14 @@ body {
 }
 
 .dark {
-  body {
-    background-color: #3f3f3f;
-  }
+  $text-color:white;
+
+  @include theme(#3f3f3f, #474747, #ffb300, $text-color)
 }
 
 .light {
-  @include theme(#ddd, #f9f3f3, #000, #ccc, #1d1b1b);
+  $text-color: #232323;
+
+  @include theme(#e6e6e6, #bdbdbd, #ffb300, $text-color);
+  @include theme_overrides(#f9f3f3, #000, #ccc, #1d1b1b);
 }

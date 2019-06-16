@@ -1,0 +1,10 @@
+<div class="header ui-helper-clearfix">
+  <p-menu #menu [popup]="true" [model]="items"></p-menu>
+  <div class="user-profile" (click)="menu.toggle($event)">
+    <img
+      src="../../../assets/images/user-profile.png"
+      alt="Loading Profile..."
+      class="user-profile-pic">
+    <span class="user-name">Administrator</span>
+  </div>
+</div>

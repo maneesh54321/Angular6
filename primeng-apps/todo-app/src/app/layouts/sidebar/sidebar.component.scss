@@ -12,12 +12,12 @@ $layoutMenuItemTransitionTime: 0.3s;
   display: inline-block;
 
   .menu-panel {
-    //overflow: hidden;
 
     ul {
       list-style: none;
       padding: 0;
       width: $layoutSidebarFinalWidth;
+      margin: 0;
 
       li {
         color: white;
@@ -70,10 +70,4 @@ $layoutMenuItemTransitionTime: 0.3s;
     top: 8px;
     right: 8px;
   }
-}
-
-.layout-header {
-  background: #2399e5;
-  height: 40px;
-  display: inline-block;
 }
