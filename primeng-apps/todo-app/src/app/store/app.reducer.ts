@@ -4,7 +4,11 @@ export interface AppState {
   loading: boolean
 }
 
-export function appReducer(state: AppState, action:AppActions.ActionsUnion) {
+const initialState = {
+  loading: false
+};
+
+export function appReducer(state: AppState = initialState, action:AppActions.ActionsUnion) {
   switch (action.type) {
     case AppActions.loadingStart.type:
       return {
