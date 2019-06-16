@@ -4,6 +4,7 @@ import {CardModule} from "primeng/card";
 import {ButtonModule} from "primeng/button";
 import {InputSwitchModule, InputTextModule, PanelMenuModule} from "primeng/primeng";
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [],
@@ -14,7 +15,8 @@ import {FormsModule} from "@angular/forms";
     PanelMenuModule,
     InputTextModule,
     InputSwitchModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports:[
     CommonModule,
@@ -23,7 +25,8 @@ import {FormsModule} from "@angular/forms";
     PanelMenuModule,
     InputTextModule,
     InputSwitchModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

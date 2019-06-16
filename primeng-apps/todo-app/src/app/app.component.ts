@@ -1,13 +1,23 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {GlobalState} from "./model/globalState";
+import {Observable} from "rxjs";
+
+import * as fromApp from './store/app.reducer';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-  constructor() {
+  appState$: Observable<fromApp.AppState>;
 
+  constructor(private store:Store<GlobalState>) {
+  }
+
+  ngOnInit(): void {
+    this.appState$ = this.store.select('app');
   }
 }

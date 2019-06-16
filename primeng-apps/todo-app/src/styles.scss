@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap');
+
 body {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  font-family: 'Muli', sans-serif;
 }
 
 @mixin theme($body-bg-color, $header-bg-color, $profile-pic-bg-color, $primary-text-color) {
@@ -12,11 +15,28 @@ body {
   }
 
   .header {
-    background-color: $header-bg-color;
+    background: $header-bg-color;
     color: $primary-text-color;
 
     .user-profile-pic {
       background-color: $profile-pic-bg-color;
+    }
+  }
+
+  .layout-sidebar {
+    box-shadow: 3px 0 3px 1px black;
+    background: linear-gradient(to bottom, rgba(20, 20, 20, 1) 0, rgba(20, 20, 20, 1) 100%);
+
+    .menu-panel {
+      ul {
+        li {
+          color: white;
+
+          &:hover {
+            color: #ffb300;
+          }
+        }
+      }
     }
   }
 }
@@ -34,14 +54,14 @@ body {
 }
 
 .dark {
-  $text-color:white;
+  $text-color: white;
 
-  @include theme(#3f3f3f, #474747, #ffb300, $text-color)
+  @include theme(#1c1c1c, #252525, #ffb300, $text-color)
 }
 
 .light {
   $text-color: #232323;
 
-  @include theme(#e6e6e6, #bdbdbd, #ffb300, $text-color);
+  @include theme(#e6e6e6, #252525, #ffb300, $text-color);
   @include theme_overrides(#f9f3f3, #000, #ccc, #1d1b1b);
 }

@@ -7,7 +7,6 @@ $layoutMenuItemTransitionTime: 0.3s;
   overflow: hidden;
   transition: width 0.5s;
   position: relative;
-  background: linear-gradient(to bottom, #4e5159 0, #1f2023 100%);
   padding-top: 50px;
   display: inline-block;
 
@@ -20,15 +19,12 @@ $layoutMenuItemTransitionTime: 0.3s;
       margin: 0;
 
       li {
-        color: white;
         padding: 15px;
-        border: 1px solid #4e5159;
         border-left: none;
         border-right: none;
         transition: color $layoutMenuItemTransitionTime;
 
         &:hover {
-          color: #2399e5;
           transition: color $layoutMenuItemTransitionTime;
         }
 

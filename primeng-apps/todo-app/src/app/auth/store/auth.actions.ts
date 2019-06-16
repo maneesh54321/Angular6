@@ -14,16 +14,10 @@ export const setToken = createAction(
   (payload: string) => ({payload})
 );
 
-export const signInError = createAction(
-  '[AUTH] SIGN_IN_ERROR'
-);
-
 const actions = union({
   trySignIn,
   signIn,
-  setToken,
-  signInError
+  setToken
 });
-
 
 export type ActionsUnion = typeof actions;
