@@ -21,6 +21,8 @@ import {environment} from '../environments/environment';
 import {DashboardEffects} from "./dashboard/store/dashboard.effects";
 import {ToastModule} from "primeng/toast";
 import {appReducer} from "./store/app.reducer";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {TokenInterceptor} from "./auth/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -40,11 +42,14 @@ import {appReducer} from "./store/app.reducer";
     ToastModule,
     ProgressSpinnerModule,
     StoreModule.forRoot({'app':appReducer}),
-    DashboardModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([DashboardEffects]),
+    DashboardModule,
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

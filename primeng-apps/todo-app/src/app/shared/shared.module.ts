@@ -3,13 +3,14 @@ import {CommonModule} from '@angular/common';
 import {CardModule} from "primeng/card";
 import {ButtonModule} from "primeng/button";
 import {InputSwitchModule, InputTextModule, PanelMenuModule} from "primeng/primeng";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     CardModule,
     ButtonModule,
     PanelMenuModule,
@@ -20,6 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   exports:[
     CommonModule,
+    ReactiveFormsModule,
     CardModule,
     ButtonModule,
     PanelMenuModule,

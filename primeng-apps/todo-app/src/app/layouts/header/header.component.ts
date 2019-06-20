@@ -1,6 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {MenuItem} from "primeng/api";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Store} from "@ngrx/store";
 import {Router} from "@angular/router";
+import {Subscription} from "rxjs";
+
+import {MenuItem, MessageService} from "primeng/api";
+import {GlobalState} from "../../model/globalState";
+import * as fromApp from '../../store/app.reducer';
+import * as fromAuth from '../../auth/store/auth.reducer';
+import {changeTheme} from "../../store/app.actions";
+import {signOut} from "../../auth/store/auth.actions";
 
 declare var document;
 
@@ -14,14 +22,19 @@ enum THEME{
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   items: MenuItem[];
 
-  currentTheme: THEME;
+  _appSubscription: Subscription;
 
-  constructor(private router: Router) {
-    this.currentTheme = THEME.DARK;
+  _authSubscription: Subscription;
+
+  _currentTheme: THEME;
+
+  constructor(private router: Router,
+              private store: Store<GlobalState>,
+              private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -32,8 +45,8 @@ export class HeaderComponent implements OnInit {
         {
           label: 'Sign Out',
           icon: 'pi pi-fw pi-sign-out',
-          command: (event: any) => {
-            this.router.navigate(['/signin']);
+          command: () => {
+            this.store.dispatch(signOut());
           }
         }
       ]
@@ -48,19 +61,36 @@ export class HeaderComponent implements OnInit {
           }
         ]
       }];
+    this._appSubscription = this.store.select<fromApp.AppState>('app').subscribe(state => {
+      if(this._currentTheme !== state.currentTheme){
+        this._currentTheme = state.currentTheme;
+        HeaderComponent.setTheme(this._currentTheme);
+      }
+    });
+    this._authSubscription = this.store.select<fromAuth.AuthState>('auth').subscribe(state => {
+      if(!state.authenticated){
+        this.router.navigate(['/', 'signin']).then(() => {
+          this.messageService.add({severity:'success', summary:'Success', detail:'Successfully Logged Out!!'});
+        });
+      }
+    });
   }
 
   static setTheme(themeName) {
     document.getElementById('html-root').className = themeName;
   }
 
-  toggleTheme(event: any) {
-    if (this.currentTheme === THEME.LIGHT) {
-      this.currentTheme = THEME.DARK;
+  toggleTheme = () => {
+    if (this._currentTheme === THEME.LIGHT) {
+      this.store.dispatch(changeTheme(THEME.DARK));
     } else {
-      this.currentTheme = THEME.LIGHT;
+      this.store.dispatch(changeTheme(THEME.LIGHT));
     }
-    HeaderComponent.setTheme(this.currentTheme);
+  };
+
+  ngOnDestroy(): void {
+    this._appSubscription.unsubscribe();
+    this._authSubscription.unsubscribe();
   }
 
 }

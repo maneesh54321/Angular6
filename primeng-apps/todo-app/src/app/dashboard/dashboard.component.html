@@ -1,3 +1,14 @@
-<p>
-  dashboard works!
-</p>
+<ngx-charts-bar-vertical
+  [view]="graphConfig.view"
+  [scheme]="graphConfig.colorScheme"
+  [results]="graphConfig.single"
+  [gradient]="graphConfig.gradient"
+  [xAxis]="graphConfig.showXAxis"
+  [yAxis]="graphConfig.showYAxis"
+  [legend]="graphConfig.showLegend"
+  [showXAxisLabel]="graphConfig.showXAxisLabel"
+  [showYAxisLabel]="graphConfig.showYAxisLabel"
+  [xAxisLabel]="graphConfig.xAxisLabel"
+  [yAxisLabel]="graphConfig.yAxisLabel"
+  (select)="onSelect($event)">
+</ngx-charts-bar-vertical>

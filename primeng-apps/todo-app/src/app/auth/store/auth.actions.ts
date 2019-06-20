@@ -14,10 +14,15 @@ export const setToken = createAction(
   (payload: string) => ({payload})
 );
 
+export const signOut = createAction(
+  '[AUTH] SIGN_OUT'
+);
+
 const actions = union({
   trySignIn,
   signIn,
-  setToken
+  setToken,
+  signOut
 });
 
 export type ActionsUnion = typeof actions;

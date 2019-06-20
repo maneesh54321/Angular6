@@ -25,7 +25,7 @@ body {
 
   .layout-sidebar {
     box-shadow: 3px 0 3px 1px black;
-    background: linear-gradient(to bottom, rgba(20, 20, 20, 1) 0, rgba(20, 20, 20, 1) 100%);
+    background: #252525;
 
     .menu-panel {
       ul {
@@ -56,12 +56,12 @@ body {
 .dark {
   $text-color: white;
 
-  @include theme(#1c1c1c, #252525, #ffb300, $text-color)
+  @include theme(#141414, #141414, #ffb300, $text-color)
 }
 
 .light {
   $text-color: #232323;
 
-  @include theme(#e6e6e6, #252525, #ffb300, $text-color);
+  @include theme(#141414, #252525, #ffb300, $text-color);
   @include theme_overrides(#f9f3f3, #000, #ccc, #1d1b1b);
 }

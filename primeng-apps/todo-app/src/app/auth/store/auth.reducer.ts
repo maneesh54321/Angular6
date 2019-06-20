@@ -1,4 +1,4 @@
-import {ActionsUnion, setToken, signIn} from './auth.actions';
+import {ActionsUnion, setToken, signIn, signOut} from './auth.actions';
 
 export interface AuthState {
   token: string;
@@ -21,6 +21,12 @@ export function AuthReducer (state = initialState, action:ActionsUnion){
       return {
         ...state,
         token: action.payload
+      };
+    case signOut.type:
+      return {
+        ...state,
+        authenticated: false,
+        token: null
       };
     default:
       return state;

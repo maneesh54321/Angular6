@@ -1,11 +1,18 @@
 import * as AppActions from './app.actions';
 
+export enum THEME {
+  DARK = 'dark',
+  LIGHT = 'light'
+}
+
 export interface AppState {
-  loading: boolean
+  loading: boolean;
+  currentTheme: THEME;
 }
 
 const initialState = {
-  loading: false
+  loading: false,
+  currentTheme: THEME.DARK
 };
 
 export function appReducer(state: AppState = initialState, action:AppActions.ActionsUnion) {
@@ -19,6 +26,11 @@ export function appReducer(state: AppState = initialState, action:AppActions.Act
       return {
         ...state,
         loading: false
+      };
+    case AppActions.changeTheme.type:
+      return {
+        ...state,
+        currentTheme: action.payload
       };
     default:
       return state;

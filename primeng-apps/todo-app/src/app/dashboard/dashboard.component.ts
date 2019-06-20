@@ -18,6 +18,32 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   cityName: string;
 
+  graphConfig: any = {
+    single: [
+      {
+        "name": "Germany",
+        "value": 8940000
+      },
+      {
+        "name": "USA",
+        "value": 5000000
+      }
+    ],
+    multi: [],
+    view: [700, 400],
+    showXAxis: true,
+    showYAxis: true,
+    gradient: false,
+    showLegend: true,
+    showXAxisLabel: true,
+    xAxisLabel: 'Country',
+    showYAxisLabel: true,
+    yAxisLabel: 'Population',
+    colorScheme: {
+      domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    }
+  };
+
   constructor(private store: Store<GlobalState>) {
     this.cityName = 'bengaluru';
   }
@@ -29,6 +55,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     this.store.dispatch(AppActions.loadingStart());
     this.store.dispatch(tryFetchWeatherForLocation(this.cityName));
+  }
+
+  onSelect(event) {
+    console.log(event);
   }
 
   ngOnDestroy(): void {
