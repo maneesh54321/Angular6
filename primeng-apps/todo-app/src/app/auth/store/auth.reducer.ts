@@ -1,13 +1,15 @@
-import {ActionsUnion, setToken, signIn, signOut} from './auth.actions';
+import { ActionsUnion, setToken, signIn, signInError, signOut } from './auth.actions';
 
 export interface AuthState {
   token: string;
   authenticated: boolean;
+  errorMessage: string;
 }
 
 const initialState: AuthState = {
   token: null,
-  authenticated: false
+  authenticated: false,
+  errorMessage:''
 };
 
 export function AuthReducer (state = initialState, action:ActionsUnion){
@@ -15,7 +17,8 @@ export function AuthReducer (state = initialState, action:ActionsUnion){
     case signIn.type:
       return {
         ...state,
-        authenticated: true
+        authenticated: true,
+        errorMessage:''
       };
     case setToken.type:
       return {
@@ -27,6 +30,11 @@ export function AuthReducer (state = initialState, action:ActionsUnion){
         ...state,
         authenticated: false,
         token: null
+      };
+    case signInError.type:
+      return {
+        ...state,
+        errorMessage: action.payload
       };
     default:
       return state;

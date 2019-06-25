@@ -1,5 +1,5 @@
-import {createAction, union} from "@ngrx/store";
-import {THEME} from "./app.reducer";
+import { createAction, union } from '@ngrx/store';
+import { THEME }               from './app.reducer';
 
 export const loadingStart = createAction(
   '[APP] LOADING_START'

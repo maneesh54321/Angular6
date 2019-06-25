@@ -1,13 +1,17 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CardModule} from "primeng/card";
-import {ButtonModule} from "primeng/button";
-import {InputSwitchModule, InputTextModule, PanelMenuModule} from "primeng/primeng";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import { NgModule }         from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule }     from '@angular/common';
+
+import { CardModule }                                                              from 'primeng/card';
+import { ButtonModule }                                                            from 'primeng/button';
+import { InputSwitchModule, InputTextModule, OverlayPanelModule, PanelMenuModule } from 'primeng/primeng';
+import { FormsModule, ReactiveFormsModule }                                        from '@angular/forms';
+import { MessageModule }                                                           from 'primeng/message';
+import { MonthPickerComponent }                                                    from './month-picker/month-picker.component';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [MonthPickerComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -17,9 +21,11 @@ import {HttpClientModule} from "@angular/common/http";
     InputTextModule,
     InputSwitchModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MessageModule,
+    OverlayPanelModule
   ],
-  exports:[
+  exports: [
     CommonModule,
     ReactiveFormsModule,
     CardModule,
@@ -28,7 +34,9 @@ import {HttpClientModule} from "@angular/common/http";
     InputTextModule,
     InputSwitchModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MessageModule,
+    MonthPickerComponent
   ]
 })
 export class SharedModule { }

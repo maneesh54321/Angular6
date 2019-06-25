@@ -1,6 +1,6 @@
-import * as DashboardActions from "./dashboard.actions";
-import {City} from "../model/city";
-import {CurrentWeatherAtLocation} from "../model/currentWeatherAtLocation";
+import * as DashboardActions        from './dashboard.actions';
+import { City }                     from '../model/city';
+import { CurrentWeatherAtLocation } from '../model/currentWeatherAtLocation';
 
 export interface DashboardState {
   city: City,

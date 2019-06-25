@@ -1,4 +1,4 @@
-import {createAction, union} from "@ngrx/store";
+import { createAction, union } from '@ngrx/store';
 
 export const tryFetchWeatherForLocation = createAction(
   '[DASHBOARD] TRY_FETCH_WEATHER_FOR_LOCATION',

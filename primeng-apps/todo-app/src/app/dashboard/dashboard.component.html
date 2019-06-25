@@ -1,14 +1,28 @@
-<ngx-charts-bar-vertical
-  [view]="graphConfig.view"
-  [scheme]="graphConfig.colorScheme"
-  [results]="graphConfig.single"
-  [gradient]="graphConfig.gradient"
-  [xAxis]="graphConfig.showXAxis"
-  [yAxis]="graphConfig.showYAxis"
-  [legend]="graphConfig.showLegend"
-  [showXAxisLabel]="graphConfig.showXAxisLabel"
-  [showYAxisLabel]="graphConfig.showYAxisLabel"
-  [xAxisLabel]="graphConfig.xAxisLabel"
-  [yAxisLabel]="graphConfig.yAxisLabel"
-  (select)="onSelect($event)">
-</ngx-charts-bar-vertical>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <ngx-charts-bar-vertical
+      [view]="graphConfig.view"
+      [scheme]="graphConfig.colorScheme"
+      [results]="graphConfig.single"
+      [gradient]="graphConfig.gradient"
+      [xAxis]="graphConfig.showXAxis"
+      [yAxis]="graphConfig.showYAxis"
+      [legend]="graphConfig.showLegend"
+      [showXAxisLabel]="graphConfig.showXAxisLabel"
+      [showYAxisLabel]="graphConfig.showYAxisLabel"
+      [xAxisLabel]="graphConfig.xAxisLabel"
+      [yAxisLabel]="graphConfig.yAxisLabel"
+      (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-g-3">
+    <app-month-picker
+      dateFormat="MMM / yyyy"
+      [(ngModel)]="currentDate"
+      (ngModelChange)="handleOnChange($event)">
+    </app-month-picker>
+  </div>
+</div>

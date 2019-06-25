@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {GlobalState} from "./model/globalState";
-import {Observable} from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { Store }             from '@ngrx/store';
+import { GlobalState }       from './model/globalState';
+import { Observable }        from 'rxjs';
 
 import * as fromApp from './store/app.reducer';
 
@@ -10,11 +10,11 @@ import * as fromApp from './store/app.reducer';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   appState$: Observable<fromApp.AppState>;
 
-  constructor(private store:Store<GlobalState>) {
+  constructor(private store: Store<GlobalState>) {
   }
 
   ngOnInit(): void {

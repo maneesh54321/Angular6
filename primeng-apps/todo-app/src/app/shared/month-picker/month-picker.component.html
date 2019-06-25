@@ -1,0 +1,26 @@
+<div class="calendar-block">
+  <div class="ui-inputgroup" (click)="calendar.toggle($event)">
+    <input
+      type="text"
+      pInputText
+      #inputfield
+      value="{{selectedDate | date: this.dateFormat}}"
+      [disabled]="true">
+    <button pButton type="button" icon="pi pi-calendar" class="ui-button-primary"></button>
+  </div>
+</div>
+<p-overlayPanel #calendar *ngIf="this.selectedDate">
+  <div class="year">
+    <span class="ui-inputgroup-addon arrow" (click)="decrementYear()"><i class="pi pi-arrow-left"></i></span>
+    <span class="value">{{selectedDate.getFullYear()}}</span>
+    <span class="ui-inputgroup-addon arrow" (click)="incrementYear()"><i class="pi pi-arrow-right"></i></span>
+  </div>
+  <div class="months">
+    <div
+      *ngFor="let month of months; let i=index"
+      (click)="pickMonth(i)"
+      [className]="selectedDate.getMonth() === i ? 'month-item selected':'month-item'">
+      {{month}}
+    </div>
+  </div>
+</p-overlayPanel>

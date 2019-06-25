@@ -1,9 +1,9 @@
-<div class="loading-screen" [hidden]="!(appState$ | async).loading">
+<div [hidden]="!(appState$ | async).loading" class="loading-screen">
   <p-progressSpinner
     [style]="{width: '50px', height: '50px'}"
-    strokeWidth="5"
     animationDuration="1s"
-    class="loading-animation">
+    class="loading-animation"
+    strokeWidth="5">
   </p-progressSpinner>
 </div>
 <p-toast position="top-right"></p-toast>

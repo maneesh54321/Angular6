@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
-import {StoreModule} from "@ngrx/store";
-import {NgxChartsModule} from "@swimlane/ngx-charts";
+import { NgModule }        from '@angular/core';
+import { StoreModule }     from '@ngrx/store';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import {DashboardComponent} from './dashboard.component';
-import {SharedModule} from "../shared/shared.module";
-import {dashboardReducer} from "./store/dashboard.reducer";
+import { DashboardComponent } from './dashboard.component';
+import { SharedModule }       from '../shared/shared.module';
+import { dashboardReducer }   from './store/dashboard.reducer';
 
 
 @NgModule({

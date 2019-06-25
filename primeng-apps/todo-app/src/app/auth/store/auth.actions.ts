@@ -1,4 +1,4 @@
-import {createAction, union} from '@ngrx/store';
+import { createAction, union } from '@ngrx/store';
 
 export const trySignIn = createAction(
   '[AUTH] TRY_SIGN_IN',
@@ -18,11 +18,17 @@ export const signOut = createAction(
   '[AUTH] SIGN_OUT'
 );
 
+export const signInError = createAction(
+  '[AUTH] SIGN_IN_ERROR',
+  (payload: string) => ({payload})
+);
+
 const actions = union({
   trySignIn,
   signIn,
   setToken,
-  signOut
+  signOut,
+  signInError
 });
 
 export type ActionsUnion = typeof actions;

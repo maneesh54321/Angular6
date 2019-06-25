@@ -29,6 +29,11 @@
             </button>
           </div>
         </div>
+        <div class="ui-g ui-fluid" *ngIf="(authState$ | async).errorMessage">
+          <div class="ui-g-12">
+            <span class="error-message">{{(authState$ | async).errorMessage}}</span>
+          </div>
+        </div>
       </p-card>
     </form>
   </div>

@@ -1,13 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Store} from "@ngrx/store";
-import {GlobalState} from "../../model/globalState";
-import {Router} from "@angular/router";
+import { Component, OnDestroy, OnInit }       from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store }                              from '@ngrx/store';
+import { GlobalState }                        from '../../model/globalState';
+import { Router }                             from '@angular/router';
 
-import * as fromAuth from '../store/auth.reducer';
-import {loadingStart, loadingStop} from "../../store/app.actions";
-import {trySignIn} from "../store/auth.actions";
-import {Subscription} from "rxjs";
+import * as fromAuth                 from '../store/auth.reducer';
+import { AuthState }                 from '../store/auth.reducer';
+import { loadingStart, loadingStop } from '../../store/app.actions';
+import { trySignIn }                 from '../store/auth.actions';
+import { Observable, Subscription }  from 'rxjs';
 
 @Component({
   selector: 'app-signin',
@@ -20,12 +21,15 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   _subscription: Subscription;
 
+  authState$: Observable<AuthState>;
+
   constructor(private store: Store<GlobalState>, private router: Router) {
   }
 
   ngOnInit() {
-    this._subscription = this.store.select<fromAuth.AuthState>('auth').subscribe(state => {
-        if(state.authenticated && state.token){
+    this.authState$ = this.store.select<fromAuth.AuthState>('auth');
+    this._subscription = this.authState$.subscribe(state => {
+      if (state.authenticated && state.token) {
         this.router.navigate(['home', 'dashboard'])
           .then(() => this.store.dispatch(loadingStop()));
       }

@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store }                        from '@ngrx/store';
+import { Subscription }                 from 'rxjs';
 
-import {tryFetchWeatherForLocation} from "./store/dashboard.actions";
-import {GlobalState} from "../model/globalState";
-import * as fromDashboard from './store/dashboard.reducer';
-import * as AppActions from '../store/app.actions';
+import { tryFetchWeatherForLocation } from './store/dashboard.actions';
+import { GlobalState }                from '../model/globalState';
+import * as fromDashboard             from './store/dashboard.reducer';
+import * as AppActions                from '../store/app.actions';
 
 @Component({
   selector: 'app-dashboard',
@@ -43,12 +43,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
       domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
     }
   };
+  currentDate: Date;
 
   constructor(private store: Store<GlobalState>) {
     this.cityName = 'bengaluru';
   }
 
   ngOnInit() {
+    this.currentDate = new Date(0);
     this._subscription = this.store.select<fromDashboard.DashboardState>('dashboard')
       .subscribe((state: fromDashboard.DashboardState) => {
         console.log(state);
@@ -65,4 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this._subscription.unsubscribe();
   }
 
+  handleOnChange(event: any) {
+    console.log(this.currentDate);
+  }
 }

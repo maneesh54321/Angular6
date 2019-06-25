@@ -1,14 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {Router} from "@angular/router";
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store }                        from '@ngrx/store';
+import { Router }                       from '@angular/router';
+import { Subscription }                 from 'rxjs';
 
-import {MenuItem, MessageService} from "primeng/api";
-import {GlobalState} from "../../model/globalState";
-import * as fromApp from '../../store/app.reducer';
-import * as fromAuth from '../../auth/store/auth.reducer';
-import {changeTheme} from "../../store/app.actions";
-import {signOut} from "../../auth/store/auth.actions";
+import { MenuItem, MessageService } from 'primeng/api';
+import { GlobalState }              from '../../model/globalState';
+import * as fromApp                 from '../../store/app.reducer';
+import * as fromAuth                from '../../auth/store/auth.reducer';
+import { changeTheme }              from '../../store/app.actions';
+import { signOut }                  from '../../auth/store/auth.actions';
 
 declare var document;
 
